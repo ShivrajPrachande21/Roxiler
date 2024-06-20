@@ -1,0 +1,23 @@
+.container{
+    background: azure;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+
+}
+.container table tbody td {
+   
+     background-color: rgb(253, 253, 85);
+     padding: 10px;
+}
+.container table{
+margin: 0 auto;
+
+}
+.content {
+    background-color: rgb(253, 253, 85);
+        max-width: 300px;
+        padding: 20px;
+        border-radius: 20px ;
+}
+    
