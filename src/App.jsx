@@ -47,7 +47,7 @@ const App = () => {
           <div className="col-3">
           
               <div class=" mb-3 ">
-                   <input type="text" class="p-4 border border-secondary" id="floatingInput" placeholder=""  value={search} onChange={(e)=>setsearch(e.target.value)}/>
+                   <input type="text" class="p-4 border border-secondary" id="floatingInput" placeholder="Search Transactions"  value={search} onChange={(e)=>setsearch(e.target.value)}/>
                   
               </div>
           </div>
