@@ -5,6 +5,8 @@ import '../components/statistics.css'
 const Statistics = ({ month }) => {
   const [transactions, setTransactions] = useState([]);
 
+  
+
   useEffect(() => {
     const fetchTransactions = async () => {
       const response = await axios.get('http://localhost:5001/api/transactions');
@@ -31,30 +33,34 @@ const Statistics = ({ month }) => {
 
 
   return (
-   <div className="container">
-    <h1 style={{marginBottom:"20px"}}>Statistics - {monthNames[month]}</h1>
-    <div className="content">
-    <table cellPadding={0} cellSpacing={0}>
-      <tbody>
-        <tr>
-          <td>Total Sale Amount :</td>
-          <td>{totalSaleAmount}</td>
-          
-        </tr>
-        <tr>
-        <td>Total Sold Items :</td>
-        <td>{totalSoldItems}</td>
-        
-        </tr>
-        <tr>
-        <td>Total Not Sold Items:</td>
-        <td>{totalNotSoldItems}</td>
-        
-        </tr>
-      </tbody>
-    </table>
+   <div className="container mt-5 ">
+    <h1 style={{marginBottom:"20px"} } className="mb-4 text-success">Statistics - {monthNames[month]}</h1>
+    <div className="row">
+      <div className="col-4">
+      <div class="card" >
+          <ul class="list-group list-group-flush">
+               <li class="list-group-item"><h5>Total Sale Amount</h5> </li>
+               <li class="list-group-item"><h5>Total Sold Items :</h5></li>
+               
+               <li class="list-group-item"><h5>Total Not Sold Items:</h5></li>
+         </ul>
+        </div>
+      </div>
+      <div className="col-3">
+      <div class="card" >
+          <ul class="list-group list-group-flush">
+               <li class="list-group-item">Rs. {totalSaleAmount}</li>
+               <li class="list-group-item">{totalSoldItems}</li>
+               <li class="list-group-item">{totalNotSoldItems}</li>
+         </ul>
+        </div>
+      </div>
+      <div className="col-4"></div>
     </div>
+         
+   
    </div>
+
   );
 };
 
