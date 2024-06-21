@@ -30,3 +30,8 @@
     margin: 20px;
     padding:5px 10px;
 }
+
+.trans tbody tr td img{
+    width: 50%;
+    aspect-ratio: 8/9;
+}
