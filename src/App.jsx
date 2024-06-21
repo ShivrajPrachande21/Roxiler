@@ -37,37 +37,43 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-     
+    <div className='container'>
+
+      <div className="container mt-5">
+          <div className="row">
+            <h1 className='text-center text-success'>Roxiler Transactions </h1>
+          </div>
+        <div className="row mt-5">
+          <div className="col-3">
+          
+              <div class="form-floating mb-3 ">
+                   <input type="text" class="form-control border border-secondary" id="floatingInput" placeholder=""  value={search} onChange={(e)=>setsearch(e.target.value)}/>
+                   <label for="floatingInput">Search Transactions</label>
+              </div>
+          </div>
+          <div className="col-4 "></div>
+
+          <div className="col-3">
+                    <select value={month} onChange={(e) => setMonth(parseInt(e.target.value))} class="mt-3 form-select border border-secondary" aria-label="Default select example">
+                              <option >Open this select menu</option>
+                              <option value={0}>January</option>
+                              <option value={1}>February</option>
+                              <option value={2} selected>March</option>
+                              <option value={3}>April</option>
+                              <option value={4}>May</option>
+                              <option value={5}>June</option>
+                              <option value={6}>July</option>
+                              <option value={7}>August</option>
+                              <option value={8}>September</option>
+                               <option value={9}>October</option>
+                              <option value={10}>November</option>
+                              <option value={11}>December</option>
+                     </select>
+          </div>
+        </div>
+      </div>
       
-      <div className="circle">
-         <h2>Transactions</h2>
-      </div>
-    
-
-      <div className="search">
-              <div className="search_info">
-
-        <input type="text" placeholder='Search Transactions' value={search} onChange={(e)=>setsearch(e.target.value)} />
-        <label>
-        Select Month:
-        <select value={month} onChange={(e) => setMonth(parseInt(e.target.value))}>
-          <option value={0}>January</option>
-          <option value={1}>February</option>
-          <option value={2}>March</option>
-          <option value={3}>April</option>
-          <option value={4}>May</option>
-          <option value={5}>June</option>
-          <option value={6}>July</option>
-          <option value={7}>August</option>
-          <option value={8}>September</option>
-          <option value={9}>October</option>
-          <option value={10}>November</option>
-          <option value={11}>December</option>
-        </select>
-      </label>
-      </div>
-      </div>
+     
       
       <hr />
       <TransactionsTable data={data} month={month}  search={search}/>
@@ -76,6 +82,8 @@ const App = () => {
       <hr />
     
       <CustomBarChart  month={month}/>
+
+      
     </div>
   );
 };
