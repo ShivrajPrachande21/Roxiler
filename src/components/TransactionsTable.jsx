@@ -37,6 +37,8 @@ const TransactionsTable = ({ month, search }) => {
         transaction.title.toLowerCase().includes(searchTerm) ||
         transaction.description.toLowerCase().includes(searchTerm) ||
         transaction.price.toString().includes(searchTerm) ||
+        transaction.category.toString().includes(searchTerm) ||
+        transaction.image.toString().includes(searchTerm) ||
         new Date(transaction.dateOfSale).toLocaleDateString().includes(searchTerm)
       );
     });
@@ -58,7 +60,9 @@ const TransactionsTable = ({ month, search }) => {
             <th>Title</th>
             <th>Description</th>
             <th>Price</th>
-            <th>Date of Sale</th>
+            <th>Category</th>
+           
+            <th>Images</th>
           </tr>
         </thead>
         <tbody>
@@ -67,7 +71,12 @@ const TransactionsTable = ({ month, search }) => {
               <td>{transaction.title}</td>
               <td>{transaction.description}</td>
               <td>{transaction.price}</td>
-              <td>{new Date(transaction.dateOfSale).toLocaleDateString()}</td>
+              <td>{transaction.category}</td>
+            
+              <td>
+                <img src={transaction.image} alt="" />
+              </td>
+             {/*<td>{new Date(transaction.dateOfSale).toLocaleDateString()}</td>*/ } 
             </tr>
           ))}
         </tbody>
