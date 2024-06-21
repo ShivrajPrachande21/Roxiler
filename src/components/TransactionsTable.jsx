@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../components/transactions.css';
+import "../components/transactions.css"
+
 
 const TransactionsTable = ({ month, search }) => {
   const [transactions, setTransactions] = useState([]);
@@ -34,6 +35,7 @@ const TransactionsTable = ({ month, search }) => {
       if (!search) return true;
       const searchTerm = search.toLowerCase();
       return (
+        transaction.id.toString().includes(searchTerm)||
         transaction.title.toLowerCase().includes(searchTerm) ||
         transaction.description.toLowerCase().includes(searchTerm) ||
         transaction.price.toString().includes(searchTerm) ||
@@ -53,35 +55,56 @@ const TransactionsTable = ({ month, search }) => {
 
   return (
     <div className='trans'>
-      <h2>Transactions</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Category</th>
-           
-            <th>Images</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredTransactions.map((transaction) => (
-            <tr key={transaction.id}>
-              <td>{transaction.title}</td>
-              <td>{transaction.description}</td>
-              <td>{transaction.price}</td>
-              <td>{transaction.category}</td>
-            
-              <td>
-                <img src={transaction.image} alt="" />
-              </td>
-             {/*<td>{new Date(transaction.dateOfSale).toLocaleDateString()}</td>*/ } 
-            </tr>
-          ))}
-        </tbody>
-      </table>
-     
+      
+      <div className="container">
+      <h2 className='mt-5 mb-4'>Transactions</h2>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="table-info">Id</th>
+      <th scope="col" class="table-info">Title</th>
+      <th scope="col" class="table-info">Description</th>
+      <th scope="col" class="table-info">Price</th>
+      <th scope="col" class="table-info">Category</th>
+      <th scope="col" class="table-info">Image</th>
+    </tr>
+  </thead>
+  <tbody >
+    {
+      filteredTransactions.map((transactions)=>(
+        <tr className='border-bottom border-danger'>
+          <td >{transactions.id}</td>
+          <td >{transactions.title}</td>
+          <td >{transactions.description}</td>
+          <td >{transactions.price}</td>
+          <td >{transactions.category}</td>
+          <td >
+            <img src={transactions.image} alt="" />
+          </td>
+        </tr>
+      ))
+    }
+  
+   
+  </tbody>
+</table>
+      
+      </div>
+      <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
     </div>
   );
 };
